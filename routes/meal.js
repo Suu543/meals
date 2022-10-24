@@ -1,9 +1,10 @@
 const { Router } = require("express");
-const { saveMeals, loadMeals } = require("../controllers/meal");
+const { saveMeals, loadMeals, deleteMeals } = require("../controllers/meal");
 const { fetchMeals } = require("../helpers/loader");
 const router = Router();
 
-router.get("/save", fetchMeals, saveMeals);
-router.get("/load", loadMeals);
+router.get("/", loadMeals);
+router.post("/", fetchMeals, saveMeals);
+router.delete("/", deleteMeals);
 
 module.exports = router;

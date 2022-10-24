@@ -39,7 +39,21 @@ const loadMeals = async (req, res, next) => {
   }
 };
 
+const deleteMeals = async (req, res, next) => {
+  try {
+    await Meal.deleteMany({});
+
+    res.status(204).json({
+      ok: true,
+      msg: "식단정보 삭제에 성공했습니다.",
+    });
+  } catch (err) {
+    console.log("err: ", err);
+  }
+};
+
 module.exports = {
   saveMeals,
   loadMeals,
+  deleteMeals,
 };
